@@ -1,28 +1,79 @@
+import { auth } from "./firebase/firebase.js";
+import { 
+    signInWithEmailAndPassword,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
-import { getFirestore, collection } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
-const firebaseApp = {
-    apiKey: "AIzaSyAlbi5QrlGupPjZyu2fhMbbLmyVim5Ioio", // Get this from your Firebase project settings -> Web app
-    authDomain: "expresso3300-checklist-asibras.firebaseapp.com",
-    databaseURL: "https://expresso3300-checklist-asibras-default-rtdb.firebaseio.com", // This might vary based on your Realtime Database location
-    projectId: "expresso3300-checklist-asibras",
-    storageBucket: "expresso3300-checklist-asibras.appspot.com", // Often projectId.appspot.com
-    messagingSenderId: "798102647023", // Your Project Number
-    appId: "1:798102647023:web:ac24afb8fe57159e11ab1a", // Get this from your Firebase project settings -> Web app
-    measurementId: "G-TDS36BLKQ9" // If Google Analytics is enabled for this specific web app
-};
-
-const app = initializeApp(firebaseApp);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
+/* função de autenticação antiga
 onAuthStateChanged(auth, user => {
     if (user != null) {
         console.log("✅ Logged in!");
     } else {
         console.log("❌ No user!");
     }
+});*/
+
+onAuthStateChanged(auth, user => {
+    if (user) {
+        console.log("Usuário já logado:", user.email);
+        window.location.href = "./src/pages/checklist.html";
+    }
 });
 
+// LOGIN
+
+const loginForm = document.getElementById("login-form");
+
+loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value.trim();
+
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, senha);
+        console.log("Login realizado:", userCredential.user.email);
+        window.location.href = "./src/pages/checklist.html";
+    } catch (error) {
+        console.error(error.code, error.message);
+        alert("Erro ao fazer login:" + error.code);
+    }
+
+});
+
+
+/* 
+import { auth } from "./firebase.js";
+import { 
+    onAuthStateChanged, 
+    signInWithEmailAndPassword 
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+// 1) Se o usuário já estiver logado, manda direto para o checklist
+onAuthStateChanged(auth, user => {
+    if (user) {
+        console.log("Usuário já logado:", user.email);
+        window.location.href = "./src/pages/checklist.html";
+    }
+});
+
+// 2) Função de login com email e senha
+const loginForm = document.getElementById("login-form");
+
+loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value.trim();
+
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, senha);
+        console.log("Login realizado:", userCredential.user.email);
+        window.location.href = "./src/pages/checklist.html";
+    } catch (error) {
+        console.error(error.code, error.message);
+        alert("Erro ao fazer login: " + error.code);
+    }
+});
+*/
