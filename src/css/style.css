@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300vh;
+}
+
+.login-box {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background: #0066ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0052cc;
+}
+
+.msg {
+    margin-top: 10px;
+    text-align: center;
+    color: red;
+    font-size: 14px;
+}
+
+.mid-row {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+
+    height: 90%;
+    width: 35%;
+
+    background-color: aquamarine;
+}
+
+.rectangle {
+    display: flex;
+
+    height: 150px;
+    width: 100%;
+    margin: 10px;
+
+    background-color: #0052cc;
+}
+
+.pontas {
+    display: flex;
+
+    margin: 20px;
+    height: 80%;
+    width: 40%;
+
+    background-color: brown;
+}

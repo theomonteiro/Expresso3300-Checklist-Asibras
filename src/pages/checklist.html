@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist de Armazém</title>
+    <link rel="stylesheet" href="../css/checkstyle.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Checklist de Armazém</h1>
+
+        <form id="checklist-form">
+
+            <h2>Estibas</h2>
+
+            <div class="estibas-container">
+
+                <!-- Gera 22 estibas numeradas -->
+                <!-- Você pode editar os nomes depois -->
+                <script>
+                    for (let i = 1; i <= 22; i++) {
+                        document.write(`
+                            <div class="estiba">
+                                <label>Estiba ${i}</label>
+                                <input type="file" name="estiba${i}[]" multiple accept="image/*">
+                            </div>
+                        `);
+                    }
+                </script>
+            </div>
+
+            <h2>Registros Fotográficos Adicionais</h2>
+
+            <div class="extra-fotos">
+                <label>Anexar arquivos</label>
+                <input type="file" name="extras[]" multiple accept="image/*">
+            </div>
+
+            <button type="submit">Enviar Checklist</button>
+
+        </form>
+    </div>
+
+</body>
+</html>
