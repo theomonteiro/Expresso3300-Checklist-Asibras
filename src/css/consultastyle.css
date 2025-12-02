@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    margin: 0;
+    padding: 40px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.search-box button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.result-box {
+    margin-top: 30px;
+}
+
+.result-box img {
+    max-width: 200px;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+button {
+    background-color: #005bbb;
+    color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+}

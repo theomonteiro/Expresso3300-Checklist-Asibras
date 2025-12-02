@@ -3,45 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checklist de Armazém</title>
+    <title>Checklist de Carregamento</title>
+
     <link rel="stylesheet" href="../css/checkstyle.css">
 </head>
+
 <body>
 
     <div class="container">
-        <h1>Checklist de Armazém</h1>
+        <h1>Checklist de Carregamento</h1>
 
-        <form id="checklist-form">
+        <!-- Dados iniciais -->
+        <div class="section">
+            <h2>Informações do Carregamento</h2>
 
+            <label for="dataCarregamento">Data do Carregamento</label>
+            <input type="date" id="dataCarregamento">
+
+            <label for="notaFiscal">Nota Fiscal</label>
+            <input type="text" id="notaFiscal" placeholder="Número da NF">
+
+            <label for="lotes">Lotes</label>
+            <div id="lotesContainer">
+                <input type="text" class="lote" placeholder="Lote 1">
+            </div>
+
+            <button id="addLote">Adicionar outro lote</button>
+        </div>
+
+        <!-- Estibas -->
+        <div class="section">
             <h2>Estibas</h2>
 
-            <div class="estibas-container">
-
-                <!-- Gera 22 estibas numeradas -->
-                <!-- Você pode editar os nomes depois -->
-                <script>
-                    for (let i = 1; i <= 22; i++) {
-                        document.write(`
-                            <div class="estiba">
-                                <label>Estiba ${i}</label>
-                                <input type="file" name="estiba${i}[]" multiple accept="image/*">
-                            </div>
-                        `);
-                    }
-                </script>
+            <div id="estibasContainer">
+                <div class="estibaItem">
+                    <label>Estiba 1</label>
+                    <input type="file" class="estibaInput" accept="image/*">
+                </div>
             </div>
 
+            <button id="addEstiba">Adicionar outra estiba</button>
+        </div>
+
+
+        <!-- Fotos adicionais -->
+        <div class="section">
             <h2>Registros Fotográficos Adicionais</h2>
 
-            <div class="extra-fotos">
-                <label>Anexar arquivos</label>
-                <input type="file" name="extras[]" multiple accept="image/*">
-            </div>
+            <label for="fotosExtras">Anexar Fotos</label>
+            <input type="file" id="fotosExtras" multiple accept="image/*">
+        </div>
 
-            <button type="submit">Enviar Checklist</button>
-
-        </form>
+        <button id="btnEnviar">Enviar Checklist</button>
     </div>
+
+    <script type="module" src="../firebase.js"></script>
+    <script type="module" src="../checklist.js"></script>
 
 </body>
 </html>
